@@ -1,0 +1,14 @@
+Address	Mnemonics	Comments
+400	MOV SI, 500	SI<-500
+403	MOV CL, [SI]	CL<-[SI]
+405	INC SI	SI<-SI+1
+406	MOV CH, 00	CH<-00
+408	MOV AL, 00	AL<-00
+40A	MOV BL, [SI]	BL<-[SI]
+40C	TEST BL, 01	BL.01
+40F	JZ 413	Jump to 413 memory location if zero flag is set
+411	ADD AL, BL	AL<-AL+BL
+413	INC SI	SI<-SI+1
+414	LOOP 40A	jump to 40A memory location if content of CX is not equal to zero
+416	MOV [600], AL	[600], AL
+41A	HLT	end
