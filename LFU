@@ -1,0 +1,102 @@
+ALGORITHM
+1. Start of program
+2. Initialize necessary variables: arrays q, p, b, and c2, integers c, c1, d, f, i, j, k, n, r, and t.
+3. Take user input for the number of pages (n), the reference string (p[]), and the number
+of frames (f).
+4. Initialize the first element of q[] with the first page number (p[0]), print it, increment the
+count of page faults (c), and increment the index k.
+5. Loop through the reference string (p[]) starting from the second element (i = 1):
+ Initialize c1 as 0.
+ Check if the current page in p[] is not present in q[]:
+ Increment c1 for each page in q[] that does not match p[i].
+c. If c1 equals the number of frames (f), indicating a page fault:
+ Increment the count of page faults (c).
+ If there are available empty frames (k < f):
+ Place the page (p[i]) into an empty frame in q[], print the frames, and
+increment k.
+ If all frames are occupied (k >= f):
+ Calculate the distance till the next occurrence of each page in q[] in the
+remaining reference string.
+ Determine the page in q[] that will not be used for the longest duration
+(b[] and c2[]).
+ Replace the identified page in q[] with the current page (p[i]), print the
+frames.
+6. After looping through all pages, print the total number of page faults (c).
+7. End of program
+
+
+ code//
+
+#include <stdio.h>
+void main()
+{
+int q[20], p[50], c = 0, c1, d, f, i, j, k = 0, n, r, t, b[20], c2[20];
+printf("Enter no of pages: ");
+scanf("%d", &n);
+printf("Enter the reference string: ");
+for (i = 0; i < n; i++)
+scanf("%d", &p[i]);
+printf("Enter no of frames: ");
+scanf("%d", &f);
+q[k] = p[k];
+printf("\n\t%d\n", q[k]);
+c++;
+k++;
+for (i = 1; i < n; i++)
+{
+c1 = 0;
+for (j = 0; j < f; j++)
+{
+if (p[i] != q[j])
+c1++;
+}
+if (c1 == f)
+{
+c++;
+if (k < f)
+{
+q[k] = p[i];
+k++;
+for (j = 0; j < k; j++)
+printf("\t%d", q[j]);
+printf("\n");
+}
+else
+{
+for (r = 0; r < f; r++)
+{
+c2[r] = 0;
+for (j = i - 1; j < n; j--)
+{
+if (q[r] != p[j])
+c2[r]++;
+else
+break;
+}
+}
+for (r = 0; r < f; r++)
+b[r] = c2[r];
+for (r = 0; r < f; r++)
+{
+for (j = r; j < f; j++)
+{
+if (b[r] < b[j])
+{
+t = b[r];
+b[r] = b[j];
+b[j] = t;
+}
+}
+}
+for (r = 0; r < f; r++)
+{
+if (c2[r] == b[0])
+q[r] = p[i];
+printf("\t%d", q[r]);
+}
+printf("\n");
+}
+}
+}
+printf("\nThe no of page faults is %d", c);
+}
