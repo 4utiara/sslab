@@ -1,0 +1,55 @@
+ALGORITHM
+1. Start of program
+2. Structures Defined:
+ File: Contains a name and content.
+ Directory: Contains a name, arrays for subdirectories and files, counters for the
+number of subdirectories and files.
+3. Function createDirectory:
+ Check if the number of subdirectories in the parent directory has not reached
+the limit (MAX_FILES).
+ Allocate memory for a new directory.
+ Initialize the new directory's name, number of subdirectories, and number of
+files.
+ Add the new directory to the parent's subdirectory list and increment the count
+of subdirectories.
+ Print a message indicating successful directory creation or an error if the limit is
+reached.
+4. Function createFile:
+ Check if the number of files in the parent directory has not reached the limit
+(MAX_FILES).
+ Create a new file structure with a given name and content.
+ Add the new file to the parent directory's file list and increment the count of
+files.
+ Print a message indicating successful file creation or an error if the limit is
+reached.
+5. Function listContents:
+ Display the contents of a directory:
+ Print the directory's name.
+ Iterate through the subdirectories and print their names.
+ Iterate through the files and print their names.
+6. main Function:
+ Create a root directory.
+Dept. of Computer Engineering , Govt. Model Engineering College , Thrikkakara
+OUTPUT
+Enter the name of the directory: dir1
+Directory 'dir1' created.
+Enter the name of a file: file1
+Enter the content of the file: hello i am CSA
+File 'file1' created.
+Contents of directory 'root':
+Subdirectories:
+- dir1
+Files:
+- file1
+34
+Dept. of Computer Engineering , Govt. Model Engineering College , Thrikkakara
+ Prompt the user to input the name of a directory (dirName) and create it using
+createDirectory.
+ Prompt the user to input the name of a file (fileName) and its content
+(fileContent), then create the file using createFile.
+ Display the contents of the root directory using listContents.
+7. Input Validation and Display:
+ The program takes user input for directory and file creation.
+ It checks for limitations on the number of subdirectories and files.
+ Displays the created directory and its contents including subdirectories and files.
+8. End of program
